@@ -163,4 +163,15 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # ]
 
 # CORS: In production, we'll replace this with your actual React URL
-CORS_ALLOW_ALL_ORIGINS = True  # Temporary for the first deployment
+# Get the frontend URL from an environment variable, or allow all for now to test
+CORS_ALLOW_ALL_ORIGINS = True
+
+# Add this to ensure Django accepts the headers
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
