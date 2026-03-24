@@ -1,8 +1,13 @@
 import axios from "axios";
 
-// Create an Axios instance pointing to our Django local server
+// Check if we are in production or local development
+const isProduction = import.meta.env.PROD;
+
 const api = axios.create({
-    baseURL: "http://localhost:8000/api/",
+    // REPLACE THIS with your actual Azure Backend URL (the one ending in .azurewebsites.net)
+    baseURL: isProduction
+        ? "https://hairy-helpdesk-ai.azurewebsites.net/api/"
+        : "http://localhost:8000/api/",
     headers: {
         "Content-Type": "application/json",
     },
